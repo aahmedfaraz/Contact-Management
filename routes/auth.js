@@ -12,7 +12,6 @@ const router = express.Router();
 // @access  Private
 
 router.get('/', auth, async (req, res) => {
-    // ????????
     try {
         const user = await User.findById(req.user.id).select('-password');
         res.json(user);
@@ -37,7 +36,7 @@ router.post('/', [
     try {
 
         const user = await User.findOne({ email });
-        if (!user) return res.status(400).json({ msg: 'A User with this email does not exist' });
+        if (!user) return res.status(400).json({ msg: 'A User with this email does not exist.' });
 
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) return res.status(400).json({ msg: 'Incorrect Password' });

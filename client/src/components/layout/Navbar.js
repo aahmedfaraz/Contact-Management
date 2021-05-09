@@ -1,23 +1,19 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
+import navbarContext from '../../context/navbar/navbarContext';
 
 const Navbar = ({name, icon}) => {
-
-    const selected = e => {
-        Array.from(document.getElementById('nav').querySelectorAll('.list-item')).forEach(item => item.classList.remove('selected'));
-        document.getElementById(`${e.target.id}`).classList.add('selected');
-    }
-
+    const {id} = useContext(navbarContext);
     return (
         <nav id="nav">
             <div className="logo">{name} <i className={icon}></i></div>
             <ul>
                 <li>
-                    <Link onClick={selected} id="home" className='list-item selected' to='/'>Home</Link>
-                    <Link onClick={selected} id="about" className='list-item' to='/about'>About</Link>
-                    <Link onClick={selected} id="login" className='list-item' to='/login'>Log In</Link>
-                    <Link onClick={selected} id="signup" className='list-item sign-up' to='/signup'>Sign Up</Link>
+                    <Link className={`list-item ${id === 'home' && 'selected'}`} to='/'>Home</Link>
+                    <Link className={`list-item ${id === 'about' && 'selected'}`} to='/about'>About</Link>
+                    <Link className={`list-item ${id === 'login' && 'selected'}`} to='/login'>Log In</Link>
+                    <Link className={`list-item ${id === 'signup' && 'selected'} sign-up`} to='/signup'>Sign Up</Link>
                 </li>
             </ul>
         </nav>

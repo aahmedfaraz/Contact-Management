@@ -16,7 +16,7 @@
   -ms-user-select: none; /* Internet Explorer/Edge */
   /* Supported by Chrome, Edge, Opera and Firefox */
 }
-*:active {
+*:focus {
   outline: 0;
 }
 
@@ -161,6 +161,15 @@ nav > ul > li > .list-item.sign-up:hover {
   }
 }
 
+.welcome-link {
+  color: black;
+  text-decoration: none;
+}
+
+.welcome-link:hover {
+  text-decoration: underline;
+}
+
 h2.about {
   border-bottom: 1px solid rgb(194, 194, 194);
   padding: 10px;
@@ -170,4 +179,76 @@ h2.about {
 p.about > span {
   font-weight: bold;
   color: var(--color-1);
+}
+
+.login-form,
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  width: 300px;
+  max-width: 100%;
+}
+
+.login-form > h2,
+.signup-form > h2 {
+  background-color: rgb(44, 44, 44);
+  color: white;
+  width: 100%;
+  margin-bottom: 10px;
+  border-radius: 20px 20px 0 0;
+  padding: 5px;
+}
+
+.login-form > .form-control,
+.signup-form > .form-control {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.login-form > .form-control > label,
+.signup-form > .form-control > label {
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.login-form > .form-control > input,
+.signup-form > .form-control > input {
+  width: 100%;
+  border: 1px solid rgb(156, 156, 156);
+  padding: 5px;
+  border-radius: 2px;
+}
+
+.login-form > .form-control > input:focus,
+.signup-form > .form-control > input:focus {
+  border-color: black;
+}
+
+.login-form > input[type="submit"],
+.signup-form > input[type="submit"] {
+  cursor: pointer;
+  background-color: rgb(44, 44, 44);
+  color: white;
+  padding: 10px 30px;
+  border: 0;
+  border-radius: 0 0 10px 10px;
+}
+
+.login-form > input[type="submit"]:hover,
+.signup-form > input[type="submit"]:hover {
+  background-color: rgb(66, 66, 66);
+}
+
+.login-form > p,
+.signup-form > p {
+  margin-top: 10px;
+  font-size: 13px;
+  color: rgb(77, 77, 77);
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import image from '../../assets/vectors/illustration.svg';
+import {Link} from 'react-router-dom';
 
 const Welcome = () => {
     return (
@@ -8,7 +9,9 @@ const Welcome = () => {
             <p>
                 Keep track of all your contacts
                 <br />
-                <small><span>Log In</span> or <span>Sign Up</span> to continue</small>
+                <small>
+                    <Link to="/login" className="welcome-link"><span>Log In</span></Link> or <Link to="/signup" className="welcome-link"><span>Sign Up</span></Link> to continue
+                </small>
             </p>
         </div>
     )

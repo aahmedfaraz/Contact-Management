@@ -1,6 +1,12 @@
-import React, {Fragment} from 'react'
+import React, {Fragment, useEffect, useContext} from 'react';
+import navbarContext from '../../context/navbar/navbarContext'
 
 const About = () => {
+    const {gotoPage} = useContext(navbarContext);
+    useEffect(() => {
+        gotoPage('about')
+        //eslint-disable-next-line
+    }, []);
     return (
         <Fragment>
             <h2 className="about">About the Contact Management App</h2>

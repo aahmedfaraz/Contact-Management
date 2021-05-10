@@ -9,27 +9,30 @@ import Signup from './components/auth/Signup';
 import NotFound from './components/pages/NotFound';
 // Importing All Contexts
 import NavbarState from './context/navbar/NavbarState';
+import ContactState from './context/contact/ContactState';
 // CSS
 import './App.css';
 
 const App = () => {
   return (
-    <NavbarState>
-      <Router>
-        <Fragment>
-          <Navbar/>
-          <div className="container">
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route exact path="/about" component={About} />
-              <Route exact path="/login" component={Login} />
-              <Route exact path="/signup" component={Signup} />
-              <Route component={NotFound} />
-            </Switch>
-          </div>
-        </Fragment>
-      </Router>
-    </NavbarState>
+    <ContactState>
+      <NavbarState>
+        <Router>
+          <Fragment>
+            <Navbar/>
+            <div className="container">
+              <Switch>
+                <Route exact path="/" component={Home} />
+                <Route exact path="/about" component={About} />
+                <Route exact path="/login" component={Login} />
+                <Route exact path="/signup" component={Signup} />
+                <Route component={NotFound} />
+              </Switch>
+            </div>
+          </Fragment>
+        </Router>
+      </NavbarState>
+    </ContactState>
   );
 }
 

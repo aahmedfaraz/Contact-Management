@@ -13,11 +13,11 @@ const About = () => {
             <p className="about">
                 This <span>Contact Manager App</span> is a <b>Full stack MERN App</b>
                 <br />
-                Developed by <span>Ahmed Faraz</span>
+                Developed by <span><a href="https://github.com/aahmedfaraz" target="_blank" title="Ahmed Faraz | Full Stack Cloud Developer">Ahmed Faraz</a></span>
                 <br />
                 for keeping track of all your contacts
             </p>
-            <p className="about">
+            <p className="about version">
                 <strong>Version: </strong> 1.0
             </p>
         </Fragment>

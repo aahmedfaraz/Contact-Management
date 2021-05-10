@@ -23,6 +23,7 @@
 body {
   font-family: "Nunito", sans-serif;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 nav {
@@ -39,16 +40,23 @@ nav > .logo {
 }
 
 nav > ul > li {
+  width: 100%;
   list-style: none;
   display: flex;
   align-items: center;
   justify-content: flex-end;
 }
 
-nav > ul > li > .list-item {
+nav > ul > li p {
+  margin-right: 15px;
+  background-color: #328eff;
+  padding: 5px 10px;
+}
+
+nav > ul > li .list-item {
   text-decoration: none;
   color: white;
-  margin-left: 5px;
+  margin-left: 10px;
   cursor: pointer;
   padding: 5px;
   width: 80px;
@@ -56,15 +64,15 @@ nav > ul > li > .list-item {
   background-color: var(--color-1);
 }
 
-nav > ul > li > .list-item:hover {
+nav > ul > li .list-item:hover {
   filter: brightness(0.9);
 }
 
-nav > ul > li > .list-item:active {
+nav > ul > li .list-item:active {
   transform: scale(0.95);
 }
 
-nav > ul > li > .list-item:first-of-type {
+nav > ul > li .list-item:first-of-type {
   margin-left: 0;
 }
 
@@ -72,10 +80,10 @@ nav > ul > li > .list-item:first-of-type {
   border-bottom: 3px solid white;
 }
 
-nav > ul > li > .list-item.sign-up {
+nav > ul > li .list-item.sign-up {
   background-color: black;
 }
-nav > ul > li > .list-item.sign-up:hover {
+nav > ul > li .list-item.sign-up:hover {
   background-color: rgb(37, 37, 37);
   filter: none;
 }
@@ -93,12 +101,18 @@ nav > ul > li > .list-item.sign-up:hover {
   }
 
   nav > ul > li {
+    flex-direction: column;
     justify-content: center;
     text-align: center;
     margin-top: 5px;
   }
 
-  nav > ul > li > .list-item {
+  nav > ul > li p {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  nav > ul > li .list-item {
     padding: 5px;
     width: 60px;
     font-size: 14px;
@@ -113,7 +127,7 @@ nav > ul > li > .list-item.sign-up:hover {
   align-items: center;
   justify-content: flex-start;
   text-align: center;
-  width: 100vw;
+  min-width: 100vw;
 }
 
 .before-login {
@@ -146,6 +160,7 @@ nav > ul > li > .list-item.sign-up:hover {
   .before-login {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(2, 1fr);
+    min-height: 70vh;
   }
   .before-login > img {
     align-self: flex-end;
@@ -181,8 +196,28 @@ p.about > span {
   color: var(--color-1);
 }
 
+p.about > span > a {
+  font-weight: bold;
+  color: var(--color-1);
+  text-decoration: none;
+}
+
+p.about > span > a:hover {
+  text-decoration: underline;
+}
+
+p.version {
+  background-color: rgb(39, 39, 39);
+  color: white;
+  width: 400px;
+  max-width: 100%;
+  padding: 5px;
+  margin: 5px 0;
+}
+
 .login-form,
-.signup-form {
+.signup-form,
+.contact-form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -192,8 +227,14 @@ p.about > span {
   max-width: 100%;
 }
 
+.contact-form {
+  width: 500px;
+  min-height: unset;
+}
+
 .login-form > h2,
-.signup-form > h2 {
+.signup-form > h2,
+.contact-form > h2 {
   background-color: rgb(44, 44, 44);
   color: white;
   width: 100%;
@@ -203,7 +244,8 @@ p.about > span {
 }
 
 .login-form > .form-control,
-.signup-form > .form-control {
+.signup-form > .form-control,
+.contact-form > .form-control {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -213,13 +255,15 @@ p.about > span {
 }
 
 .login-form > .form-control > label,
-.signup-form > .form-control > label {
+.signup-form > .form-control > label,
+.contact-form > .form-control > label {
   cursor: pointer;
   font-size: 14px;
 }
 
 .login-form > .form-control > input,
-.signup-form > .form-control > input {
+.signup-form > .form-control > input,
+.contact-form > .form-control > input {
   width: 100%;
   border: 1px solid rgb(156, 156, 156);
   padding: 5px;
@@ -227,12 +271,14 @@ p.about > span {
 }
 
 .login-form > .form-control > input:focus,
-.signup-form > .form-control > input:focus {
+.signup-form > .form-control > input:focus,
+.contact-form > .form-control > input:focus {
   border-color: black;
 }
 
 .login-form > input[type="submit"],
-.signup-form > input[type="submit"] {
+.signup-form > input[type="submit"],
+.contact-form > input[type="submit"] {
   cursor: pointer;
   background-color: rgb(44, 44, 44);
   color: white;
@@ -242,13 +288,164 @@ p.about > span {
 }
 
 .login-form > input[type="submit"]:hover,
-.signup-form > input[type="submit"]:hover {
+.signup-form > input[type="submit"]:hover,
+.contact-form > input[type="submit"]:hover {
   background-color: rgb(66, 66, 66);
 }
 
 .login-form > p,
-.signup-form > p {
+.signup-form > p,
+.contact-form > p {
   margin-top: 10px;
   font-size: 13px;
   color: rgb(77, 77, 77);
+}
+
+.home {
+  width: 800px;
+  max-width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.radio-container > input:last-of-type {
+  margin-left: 10px;
+}
+
+.filter {
+  background-color: rgb(82, 82, 82);
+  width: 300px;
+  max-width: 100%;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+  margin-bottom: 10px;
+}
+
+.filter > input {
+  width: 100%;
+  padding: 5px;
+  border-radius: 20px 0 0 20px;
+  border: 0;
+}
+
+.filter > button {
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 0 20px 20px 0;
+  border: 0;
+  background-color: rgb(48, 48, 48);
+  color: white;
+}
+
+.filter > button:active {
+  transform: scale(0.95);
+}
+
+.contacts {
+  align-self: flex-start;
+  margin-left: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.contacts > .contact {
+  margin-bottom: 10px;
+}
+.contacts > .contact:last-of-type {
+  margin-bottom: 0;
+}
+
+@media (max-width: 700px) {
+  .home {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .home > form {
+    border-bottom: 1px solid rgb(194, 194, 194);
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
+
+  .contacts {
+    align-self: center;
+    margin-left: 0;
+  }
+}
+
+.contact {
+  position: relative;
+  background-color: rgb(245, 245, 245);
+  border: 1px solid rgb(216, 216, 216);
+  border-bottom-width: 2px;
+  border-radius: 5px;
+  padding: 10px;
+  width: 400px;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.contact > p:first-of-type {
+  font-size: 20px;
+  color: var(--color-1);
+}
+
+.contact > small {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 10px;
+  padding: 5px;
+  background-color: rgb(172, 172, 172);
+  border-radius: 5px;
+  color: white;
+  z-index: 2;
+}
+
+.contact > small.personal {
+  background-color: rgb(0, 189, 0);
+}
+
+.contact > small.professional {
+  background-color: rgb(0, 100, 201);
+}
+
+.contact > .controls {
+  margin-top: 5px;
+}
+
+.contact > .controls > button {
+  cursor: pointer;
+  border: 0;
+  padding: 10px;
+  width: 70px;
+  text-align: center;
+  color: white;
+}
+
+.contact > .controls > button:hover {
+  filter: brightness(1.3);
+}
+
+.contact > .controls > button:active {
+  transform: scale(0.95);
+}
+
+.edit {
+  background-color: rgb(44, 44, 44);
+}
+.delete {
+  background-color: rgb(255, 75, 43);
+  margin-left: 10px;
 }

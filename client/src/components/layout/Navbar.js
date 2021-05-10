@@ -10,10 +10,15 @@ const Navbar = ({name, icon}) => {
             <div className="logo">{name} <i className={icon}></i></div>
             <ul>
                 <li>
-                    <Link className={`list-item ${id === 'home' && 'selected'}`} to='/'>Home</Link>
-                    <Link className={`list-item ${id === 'about' && 'selected'}`} to='/about'>About</Link>
-                    <Link className={`list-item ${id === 'login' && 'selected'}`} to='/login'>Log In</Link>
-                    <Link className={`list-item ${id === 'signup' && 'selected'} sign-up`} to='/signup'>Sign Up</Link>
+                    <div>
+                        <p>Hi Ahmed!</p>
+                    </div>
+                    <div>
+                        <Link className={`list-item ${id === 'home' && 'selected'}`} to='/'>Home</Link>
+                        <Link className={`list-item ${id === 'about' && 'selected'}`} to='/about'>About</Link>
+                        <Link className={`list-item ${id === 'login' && 'selected'}`} to='/login'>Log In</Link>
+                        <Link className={`list-item ${id === 'signup' && 'selected'} sign-up`} to='/signup'>Sign Up</Link>
+                    </div>
                 </li>
             </ul>
         </nav>

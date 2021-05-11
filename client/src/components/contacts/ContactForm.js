@@ -1,4 +1,4 @@
-import React, {useState,useContext} from 'react';
+import React, {useState,useContext, useEffect} from 'react';
 import contactContext from '../../context/contact/contactContext';
 
 const ContactForm = () => {
@@ -11,11 +11,29 @@ const ContactForm = () => {
     const {name, email, phone, type} = contact;
     const onChange = e => setContact({...contact, [e.target.name]: e.target.value});
 
-    const {addContact} = useContext(contactContext);
+    const {addContact, current, updateContact} = useContext(contactContext);
+
+    useEffect(() => {
+        if (current !== null) {
+            setContact(current);
+        } else {
+            setContact({
+                name: '',
+                email: '',
+                phone: '',
+                type: 'personal',
+            })
+        }
+        // eslint-disable-next-line
+    }, [current, contactContext]);
 
     const onSubmit = e => {
         e.preventDefault();
-        addContact(contact);
+        if(current != null) {
+            updateContact(contact);
+        } else {
+            addContact(contact);
+        }
         setContact({
             name: '',
             email: '',
@@ -26,7 +44,11 @@ const ContactForm = () => {
 
     return (
         <form onSubmit={onSubmit} className="contact-form">            
-            <h2>Add Contact</h2>
+            <h2>
+                {
+                    current ? 'Edit Contact' : 'Add Contact'
+                }
+            </h2>
             <div className="form-control">
                 <label htmlFor="contact-name">Name</label>
                 <input type="text" id="contact-name" name="name" value={name} onChange={onChange} />
@@ -46,7 +68,9 @@ const ContactForm = () => {
                     <input type="radio" name="type" value="professional" checked={type==='professional'} onChange={onChange} /> Professional
                 </div>
             </div>
-            <input type="submit" value="Add Contact" />
+            <input type="submit" value={
+                current ? 'Update' : 'Add'
+            } />
         </form>
     )
 }

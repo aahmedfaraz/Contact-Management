@@ -13,6 +13,7 @@ const Welcome = () => {
                     <Link to="/login" className="welcome-link"><span>Log In</span></Link> or <Link to="/signup" className="welcome-link"><span>Sign Up</span></Link> to continue
                 </small>
             </p>
+            <small className="info">Developed By <a href="https://github.com/aahmedfaraz" target="_black" title="Ahmed Faraz | Full Stack Cloud Developer">Ahmed Faraz</a></small>
         </div>
     )
 }

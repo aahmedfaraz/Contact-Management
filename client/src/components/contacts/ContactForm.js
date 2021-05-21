@@ -1,5 +1,6 @@
 import React, {useState,useContext, useEffect} from 'react';
 import contactContext from '../../context/contact/contactContext';
+import alertContext from '../../context/alert/alertContext';
 
 const ContactForm = () => {
     const [contact, setContact] = useState({
@@ -12,6 +13,7 @@ const ContactForm = () => {
     const onChange = e => setContact({...contact, [e.target.name]: e.target.value});
 
     const {addContact, current, updateContact} = useContext(contactContext);
+    const {setAlert} = useContext(alertContext);
 
     useEffect(() => {
         if (current !== null) {
@@ -29,17 +31,21 @@ const ContactForm = () => {
 
     const onSubmit = e => {
         e.preventDefault();
-        if(current != null) {
-            updateContact(contact);
+        if(name.trim() === '' || email.trim() === '' || phone.trim() === '') {
+            setAlert('Some credentials are missing', 'danger');
         } else {
-            addContact(contact);
+            if(current != null) {
+                updateContact(contact);
+            } else {
+                addContact(contact);
+            }
+            setContact({
+                name: '',
+                email: '',
+                phone: '',
+                type: 'personal',
+            })
         }
-        setContact({
-            name: '',
-            email: '',
-            phone: '',
-            type: 'personal',
-        })
     }
 
     return (

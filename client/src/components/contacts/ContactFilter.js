@@ -19,11 +19,18 @@ const Filter = () => {
             clearFilter();
         }
     };
+
+    const clear = e => {
+        e.preventDefault();
+        text.current.value = '';
+        clearFilter();
+    }
+
     return (
         <form className="filter">
             <input type="text" ref={text} placeholder="Search contact" onChange={onChange} />
             {
-                text.current.value && <button><i className="fas fa-times-circle"></i></button>
+                text.current.value && <button><i className="fas fa-times-circle" onClick={clear} ></i></button>
             }
         </form>
     )

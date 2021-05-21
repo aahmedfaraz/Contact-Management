@@ -9,7 +9,7 @@ const About = () => {
     }, []);
     return (
         <Fragment>
-            <h2 className="about">About the Contact Management App</h2>
+            <h1 className="about">About the Contact Management App</h1>
             <p className="about">
                 This <span>Contact Manager App</span> is a <b>Full stack MERN App</b>
                 <br />

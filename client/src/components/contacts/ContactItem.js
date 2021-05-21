@@ -1,6 +1,7 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import contactContext from '../../context/contact/contactContext';
+import { CSSTransition } from 'react-transition-group';
 
 const ContactItem = ({contact}) => {
     const {name, email, phone, type} = contact;
@@ -20,18 +21,20 @@ const ContactItem = ({contact}) => {
     }
 
     return (
-        <div className="contact">
-            <small className={type}>
-                <i className={`fas fa-${icon}`}></i> {type.charAt(0).toUpperCase() + type.slice(1)}
-            </small>
-            <p className="name">{name}</p>
-            <p><i className="fas fa-envelope-square"></i> {email}</p>
-            <p><i className="fas fa-phone-square"></i> {phone}</p>
-            <div className="controls">
-                <button className="edit" onClick={onSetCurrent}>Edit</button>
-                <button className="delete" onClick={onDelete}>Delete</button>
+        <CSSTransition in={true} timeout={1000} className="contact" unmountOnExit>
+            <div className="contact">
+                <small className={type}>
+                    <i className={`fas fa-${icon}`}></i> {type.charAt(0).toUpperCase() + type.slice(1)}
+                </small>
+                <p className="name">{name}</p>
+                <p><i className="fas fa-envelope-square"></i> {email}</p>
+                <p><i className="fas fa-phone-square"></i> {phone}</p>
+                <div className="controls">
+                    <button className="edit" onClick={onSetCurrent}>Edit</button>
+                    <button className="delete" onClick={onDelete}>Delete</button>
+                </div>
             </div>
-        </div>
+        </CSSTransition>
     )
 }
 

@@ -21,6 +21,7 @@
 }
 
 body {
+  position: relative;
   font-family: "Nunito", sans-serif;
   min-height: 100vh;
   overflow-x: hidden;
@@ -88,6 +89,17 @@ nav > ul > li .list-item.sign-up:hover {
   filter: none;
 }
 
+nav > ul > li .list-item.logout {
+  border: 0;
+  background-color: black;
+  padding: 10px;
+  margin-left: 10px;
+}
+nav > ul > li .list-item.logout:hover {
+  background-color: rgb(37, 37, 37);
+  filter: none;
+}
+
 @media (max-width: 750px) {
   nav {
     grid-template-columns: 1fr;
@@ -138,6 +150,17 @@ nav > ul > li .list-item.sign-up:hover {
   min-height: 80vh;
 }
 
+.before-login > small.info {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 10px;
+}
+
+.before-login > small.info > a {
+  color: black;
+}
+
 .before-login > img {
   width: 500px;
   max-width: 100%;
@@ -185,7 +208,7 @@ nav > ul > li .list-item.sign-up:hover {
   text-decoration: underline;
 }
 
-h2.about {
+h1.about {
   border-bottom: 1px solid rgb(194, 194, 194);
   padding: 10px;
   margin-bottom: 10px;
@@ -362,6 +385,7 @@ p.version {
 .contacts > .contact {
   margin-bottom: 10px;
 }
+
 .contacts > .contact:last-of-type {
   margin-bottom: 0;
 }
@@ -418,7 +442,7 @@ p.version {
 }
 
 .contact > small.personal {
-  background-color: rgb(0, 128, 0);
+  background-color: rgb(0, 167, 0);
 }
 
 .contact > small.professional {
@@ -451,5 +475,34 @@ p.version {
 }
 .delete {
   background-color: rgb(255, 75, 43);
-  margin-left: 10px;
+  margin-left: 5px;
+}
+
+.contact-enter {
+  opacity: 0;
+}
+
+.contact-enter-active {
+  opacity: 1;
+  transition: opacity 200ms;
+}
+
+.contact-exit {
+  opacity: 1;
+}
+
+.contact-exit-active {
+  opacity: 0;
+  transition: opacity 200ms;
+}
+
+.alert {
+  background-color: rgb(247, 247, 247);
+  padding: 5px;
+  margin: 5px 10px;
+}
+
+.alert.danger {
+  background-color: rgb(255, 102, 102);
+  color: white;
 }

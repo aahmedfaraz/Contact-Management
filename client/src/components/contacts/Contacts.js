@@ -9,10 +9,15 @@ const Contacts = () => {
     return (
         <div className="contacts">
             <ContactFilter />
-            {filtered ?
-                filtered.map(contact => <ContactItem key={contact.id} contact={contact} />)
-                : 
-                contacts ? contacts.map(contact => <ContactItem key={contact.id} contact={contact} />) : <p>Please use the form to add a contact.</p>
+            {filtered ? 
+                (
+                    filtered.length > 0 ? filtered.map(contact => <ContactItem key={contact.id} contact={contact} />) : <p>No match found.</p>
+                )   
+                :
+                (
+                    contacts.length > 0 ? contacts.map(contact => <ContactItem key={contact.id} contact={contact} />) : <p>Please use the form to add a contact.</p>
+                )
+                
             }
         </div>
     )

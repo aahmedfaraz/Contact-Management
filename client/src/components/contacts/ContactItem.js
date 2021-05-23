@@ -16,7 +16,7 @@ const ContactItem = ({contact}) => {
 
     const onDelete = e => {
         e.preventDefault();
-        deleteContact(contact.id);
+        deleteContact(contact._id);
         clearCurrent();
     }
 

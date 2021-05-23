@@ -27,7 +27,7 @@ const authReducer = (state,action) => {
             return {
                 ...state,
                 token: null,
-                isAuthenticated: false,
+                isAuthenticated: null,
                 loading: false,
                 user: null,
                 error: action.payload
@@ -44,7 +44,7 @@ const authReducer = (state,action) => {
             return {
                 ...state,
                 token: null,
-                isAuthenticated: false,
+                isAuthenticated: null,
                 loading: false,
                 user: null,
                 error: null

@@ -3,14 +3,18 @@ import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import navbarContext from '../../context/navbar/navbarContext';
 import authContext from '../../context/auth/authContext';
+import contactContext from '../../context/contact/contactContext';
 
-const Navbar = ({name, icon}) => {
+const Navbar = props => {
+    const {name, icon} = props;
     const {id} = useContext(navbarContext);
     const {isAuthenticated, user, logout} = useContext(authContext);
+    const {clearContacts} = useContext(contactContext);
 
     const logoutUser = e => {
         e.preventDefault();
         logout();
+        clearContacts();
     }
     return (
         <nav id="nav">
@@ -24,15 +28,21 @@ const Navbar = ({name, icon}) => {
                         </div>
                     }
                     <div>
-                        <Link className={`list-item ${id === 'home' && 'selected'}`} to='/'>Home</Link>
-                        <Link className={`list-item ${id === 'about' && 'selected'}`} to='/about'>About</Link>
                         {
                             !isAuthenticated ? (
                                 <Fragment>
+                                    <Link className={`list-item ${id === 'welcome' && 'selected'}`} to='/welcome'>Welcome</Link>
+                                    <Link className={`list-item ${id === 'about' && 'selected'}`} to='/about'>About</Link>
                                     <Link className={`list-item ${id === 'login' && 'selected'}`} to='/login'>Log In</Link>
                                     <Link className={`list-item ${id === 'signup' && 'selected'} sign-up`} to='/signup'>Sign Up</Link>
                                 </Fragment>
-                            ) : <button className="list-item logout" onClick={logoutUser}>Logout</button>
+                            ) : (
+                                <Fragment>
+                                    <Link className={`list-item ${id === 'home' && 'selected'}`} to='/'>Home</Link>
+                                    <Link className={`list-item ${id === 'about' && 'selected'}`} to='/about'>About</Link>
+                                    <button className="list-item logout" onClick={logoutUser}>Logout</button>
+                                </Fragment>
+                            )
                         }
                     </div>
                 </li>

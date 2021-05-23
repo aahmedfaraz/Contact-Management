@@ -1,8 +1,14 @@
-import React from 'react';
+import React, {useContext, useEffect} from 'react';
 import image from '../../assets/vectors/illustration.svg';
 import {Link} from 'react-router-dom';
+import navbarContext from '../../context/navbar/navbarContext';
 
 const Welcome = () => {
+    const {gotoPage} = useContext(navbarContext);
+    useEffect(() => {
+        gotoPage('welcome');
+        //eslint-disable-next-line
+    }, []);
     return (
         <div className="before-login">
             < img src={image} alt="Illustration" />

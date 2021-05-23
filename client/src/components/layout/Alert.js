@@ -1,7 +1,14 @@
-import React, {Fragment, useContext} from 'react';
+import React, {Fragment, useContext, useEffect} from 'react';
 import alertContext from '../../context/alert/alertContext';
+import contactContext from '../../context/contact/contactContext';
 const Alert = () => {
-    const {alerts} = useContext(alertContext);
+    const {alerts, setAlert} = useContext(alertContext);
+    const {error, clearError} = useContext(contactContext);
+    useEffect(() => {
+        error && setAlert(error);
+        clearError();
+        //eslint-disable-next-line
+    }, []);
     return (
         <Fragment>
             {

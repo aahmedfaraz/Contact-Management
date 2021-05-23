@@ -2,6 +2,7 @@ import React, {Fragment} from 'react';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 // Importing Components
 import Navbar from './components/layout/Navbar';
+import Welcome from './components/layout/Welcome';
 import Home from './components/pages/Home';
 import About from './components/pages/About';
 import Login from './components/auth/Login';
@@ -34,6 +35,7 @@ const App = () => {
                 <div className="container">
                   <Switch>
                     <Route exact path="/" component={Home} />
+                    <Route exact path="/welcome" component={Welcome} />
                     <Route exact path="/about" component={About} />
                     <Route exact path="/login" component={Login} />
                     <Route exact path="/signup" component={Signup} />
